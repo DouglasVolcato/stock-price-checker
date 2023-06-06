@@ -1,0 +1,19 @@
+{
+  "scripts": {
+    "start": "node server.js",
+    "test": "mocha --timeout 5000 --require @babel/register --recursive --exit --ui tdd tests/"
+  },
+  "dependencies": {
+    "@babel/register": "^7.21.0",
+    "axios": "^1.4.0",
+    "body-parser": "^1.15.2",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "cors": "^2.8.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.14.0",
+    "helmet": "^3.1.0",
+    "mocha": "^3.2.0",
+    "uuid": "^9.0.0"
+  }
+}
