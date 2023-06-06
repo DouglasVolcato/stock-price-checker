@@ -11,6 +11,16 @@ const runner = require("./test-runner");
 
 const app = express();
 
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "trusted-cdn.com"],
+      styleSrc: ["'self'"],
+    },
+  })
+);
+
 app.use("/public", express.static(process.cwd() + "/public"));
 
 app.use(cors({ origin: "*" })); //For FCC testing purposes only
@@ -28,12 +38,6 @@ fccTestingRoutes(app);
 
 //Routing for API
 apiRoutes(app);
-
-app.use(
-  helmet.contentSecurityPolicy({
-    directives: { defaultSrc: ["'self'"], scriptSrc: ["'self'"] },
-  })
-);
 
 //404 Not Found Middleware
 app.use(function (req, res, next) {
